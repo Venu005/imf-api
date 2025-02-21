@@ -6,7 +6,12 @@ const authRouter = require("./routes/auth");
 
 app.use(express.json());
 app.use(cookieParser());
-
+app.use(
+  cors({
+    origin: "https://imf-api-bcqt.onrender.com",
+  })
+);
+app.options("*", cors());
 // Routes
 app.use("/auth", authRouter);
 app.use("/gadgets", gadgetsRouter);
